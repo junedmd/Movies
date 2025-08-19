@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { handleError, handleSucsess } from '../../utils';
+import { useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_API_URL;
 function Login() {
 
@@ -16,6 +17,7 @@ function Login() {
   const directCall = () => {
     window.location.href = "/"
   }
+  const navigate = useNavigate();
 
   useEffect(() => {
     const store = JSON.parse(localStorage.getItem("user") || "{}");
@@ -43,17 +45,17 @@ function Login() {
           password: password,
         });
         if (response?.data?.success) {
-          handleSucsess(" You Signup Successfully!!! ")
+          handleSucsess(" You Signup Successfully!!! ");
           setTimeout(() => {
-            window.location.href = "/login";
+            navigate("/login");   // this will stay in frontend router
           }, 1500);
 
           setSignState("Login")
 
         } else {
-          // alert(response?.data?.message)
+        
           handleError(" Please fill all the details.")
-          // toast.success(response?.data?.message);
+          
 
         };
         setName("");
