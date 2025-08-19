@@ -24,10 +24,16 @@ const connectMongoDB = async ()=>{
 connectMongoDB();
 
 app.use(cors({
-  origin: ['http://localhost:5173',"https://movies-hub-roan.vercel.app/"],
+  origin: ['http://localhost:5173', "https://movies-hubs-delta.vercel.app"],
   methods: ['GET', 'POST'],
   credentials: true
 }));
+
+
+
+app.get("/", (req, res) => {
+  res.send("Backend is running ✅");
+});
 // api for task
 app.post("/api/users",postUser);
 app.post("/api/logins",postLogin);
