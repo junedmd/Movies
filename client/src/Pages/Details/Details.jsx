@@ -3,7 +3,7 @@ import "./Details.css";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import back_arrow from "../../assets/back_arrow_icon.png";
-import Navbar from "../../Components/Navbar/Navbar";
+
 
 
 const Details = () => {

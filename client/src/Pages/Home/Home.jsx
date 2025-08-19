@@ -7,7 +7,7 @@ import image1 from "../../../public/tom.avif"
 
 import play_icon from './../../assets/play_icon.png';
 import info_icon from './../../assets/info_icon.png';
-import TitleCard from '../../components/TitleCard/TitleCard'
+import TitleCard from "./../../Components/TitleCard/TitleCard.jsx"
 
 function Home() {
   return (
@@ -48,9 +48,4 @@ export default Home
 
 
 
-{/* <div className="more-card">
-            <TitleCard title={"BlockBuster Movies"} category={"top_rated"}/>
-             <TitleCard title={"New UpComing"} category={"popular"}/>
-            <TitleCard title={"Only on Netflix"}  category={"now_playing"}/>
-            <TitleCard title={"Top Pics for You"} category={"upcoming"}/>
-        </div> */}
+
