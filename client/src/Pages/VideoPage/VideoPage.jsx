@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./VideoPage.css";
 import back_arrow from "../../assets/back_arrow_icon.png"
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 
 function Video() {
 
     const { id } = useParams();
     const location = useLocation();
     const bgImage = location.state?.bgImage;
-    const handleBack = () => {
-        window.location.href = `/details/${id}`;
-    };
+    
+   const navigate = useNavigate();   // ✅ initialize nvaigate
+
+  const handleBack = () => {
+    navigate(-1);   // ✅ goes back one page in history
+  };
 
 
     const [data, setData] = useState({

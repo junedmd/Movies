@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Details.css";
-import { useParams } from "react-router";
+import { useParams,useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import back_arrow from "../../assets/back_arrow_icon.png";
 
@@ -11,9 +11,11 @@ const Details = () => {
   const [movieData, setMovieData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-   const handleBack = () => {
-        window.location.href = `/`;
-    };
+   const navigate = useNavigate();   
+
+  const handleBack = () => {
+    navigate(-1);   
+  };
   const options = {
     method: "GET",
     headers: {
