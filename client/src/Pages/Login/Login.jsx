@@ -29,6 +29,7 @@ function Login() {
   const SignIn = async (e) => {
 
     e.preventDefault();
+    console.log("API Base URL:", API);
 
     try {
 
@@ -36,7 +37,7 @@ function Login() {
       if (signState === "Sign Up") {
 
 
-        const response = await axios.post(`https://movies-3-4t70.onrender.com/api/users`, {
+        const response = await axios.post(`${API}/users`, {
           name: name,
           email: email,
           password: password,
@@ -59,7 +60,7 @@ function Login() {
         setPassword("");
         setEmail('');
       } else {
-        const response = await axios.post(`https://movies-3-4t70.onrender.com/api/logins`, {
+        const response = await axios.post(`${API}/logins`, {
           email: email,
           password: password,
         });
