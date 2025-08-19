@@ -8,7 +8,7 @@ function Users() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(`${API}/api/users`)
+        fetch(`https://movies-3-4t70.onrender.com/api/users`)
             .then(response => response.json())
             .then(response => setData(response.data),sponse => setData(response.data), console.log("data of the users", data))
             .catch(err => console.error(err));

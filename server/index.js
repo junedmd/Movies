@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import cors from "cors";
-app.use(cors());
+
 import { postUser,postLogin, getUser } from "./controllers/user.js";
 
 const PORT = process.env.PORT || 5000;
@@ -24,7 +24,7 @@ const connectMongoDB = async ()=>{
 connectMongoDB();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173',"https://movies-hub-roan.vercel.app/"],
   methods: ['GET', 'POST'],
   credentials: true
 }));

@@ -28,7 +28,10 @@ function Home() {
                     More Info
                 </button>  
             </div>
-           <TitleCard/>
+            <div className="tite">
+
+                   <TitleCard/>
+            </div>
         </div>
         </div>
 

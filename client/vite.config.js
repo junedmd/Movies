@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000', // Your backend URL
+        target: 'https://movies-3-4t70.onrender.com', // Your backend URL
         changeOrigin: true,
         secure: false,
       },

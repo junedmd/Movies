@@ -64,3 +64,56 @@ gap: 10px;
     margin-top: 0px;   /* Push cards below hero */
     padding-left: 6%;
 }
+@media (max-width: 768px) {
+  /* .hero-caption {
+    padding-left: 4%;
+    bottom: 20px;
+  } */
+
+  .hero-caption {
+    display: none;
+  }
+
+  .hero-btns {
+    flex-direction: column; /* stack buttons vertically */
+    gap: 8px;
+    width: 60%;
+  }
+
+  .hero-btns .btn {
+    width: 100%; /* make buttons full width */
+    justify-content: center;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .banner-img {
+    object-fit: cover;
+    height: 250px; /* smaller hero image */
+  }
+
+  .more-card {
+    padding-left: 4%;
+    margin-top: 10px;
+  }
+  .title {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+ .hero-caption {
+    display: none;
+  }
+
+  .hero-btns {
+    width: 80%;
+  }
+
+  .banner-img {
+    height: 200px;
+  }
+  .title {
+    display: none;
+  }
+}

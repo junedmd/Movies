@@ -14,7 +14,7 @@
 }
 .footer ul{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: repeat(5, auto);
     gap: 15px;
     margin-bottom: 30px;
     list-style: none;
@@ -30,4 +30,47 @@
 .text{
     color: grey;
     font-size: 17px;
+}
+
+
+@media (max-width: 1024px) {
+  .footer ul {
+    grid-template-columns: repeat(3, auto); /* 3 columns on tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  .footer ul {
+    grid-template-columns: repeat(2, auto); /* 2 columns on mobile */
+    gap: 12px;
+  }
+
+  .footer ul li {
+    font-size: 12px;
+  }
+  .footer-icon{
+    display: flex;
+    justify-content:space-evenly;
+
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer ul {
+    grid-template-columns: 2fr; /* 1 column on very small devices */
+    text-align: center;
+  }
+
+  .footer ul li {
+    font-size: 13px;
+  }
+
+  .footer-icon img {
+    width: 25px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
 }

@@ -36,7 +36,7 @@ function Login() {
       if (signState === "Sign Up") {
 
 
-        const response = await axios.post(`${API}/api/users`, {
+        const response = await axios.post(`https://movies-3-4t70.onrender.com/api/users`, {
           name: name,
           email: email,
           password: password,
@@ -59,7 +59,7 @@ function Login() {
         setPassword("");
         setEmail('');
       } else {
-        const response = await axios.post(`${API}/api/logins`, {
+        const response = await axios.post(`https://movies-3-4t70.onrender.com/api/logins`, {
           email: email,
           password: password,
         });
