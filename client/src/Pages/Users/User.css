@@ -1,0 +1,58 @@
+/* Container */
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Users grid */
+.user-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 6%;
+}
+
+/* Single user card */
+.user-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* User image */
+.img-card {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #eee;
+}
+
+/* User details */
+.user-box h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.user-box h3 {
+  font-size: 16px;
+  color: #666;
+  font-weight: normal;
+}
+
+.head-text{
+  margin-top: 50px;
+  color: #eee;
+}

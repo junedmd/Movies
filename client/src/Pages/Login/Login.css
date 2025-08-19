@@ -1,0 +1,118 @@
+.login {
+    height: 100vh;
+    background-image: linear-gradient(#06050507, #eb0f0f80), url(../../assets/bac.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    padding: 20px 8%;
+
+}
+.login-logo {
+   font-family: 'Poppins', sans-serif;
+  font-size: 2rem; 
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ed1144, #d52505, #ff416c);
+  background-size: 40%;
+  -webkit-background-clip: text;
+    background-clip: text;         
+  -webkit-text-fill-color: transparent;
+  color: transparent;                   
+  animation: gradientMove 3s infinite linear;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-bottom: 2px solid white;
+
+}
+.logo {
+    width: 150px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    padding: 40px;
+    margin: auto;
+}
+
+.login-form h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: rgb(238, 39, 25);
+}
+
+/* .login-form h1:hover{
+   
+    color: rgb(238, 39, 25);
+} */
+.login-form input {
+    width: 100%;
+    height: 35px;
+    background: #333;
+    color: white;
+    margin: 10px 0;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    padding: 16px 20px;
+}
+
+.btn {
+    width: 100%;
+    height: 35px;
+    border: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(238, 39, 25);
+    ;
+    cursor: pointer;
+}
+
+.form-help {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.remember input {
+    width: 15px;
+    height: 15px;
+}
+
+.remember label {
+    cursor: pointer;
+}
+
+p {
+    cursor: pointer;
+}
+
+.form-switch {
+    margin-top: 40px;
+    color: #aba5a5;
+}
+
+.form-switch span {
+    margin-left: 6px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}

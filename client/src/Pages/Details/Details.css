@@ -1,0 +1,126 @@
+.movie-container {
+  font-family: Arial, sans-serif;
+  color: #fff;
+  width: 100%;
+  background: #e63600;
+ 
+}
+
+
+.backdrop {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 18, 18, 0.7);
+}
+.arow{
+  height: 30px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+.movie-header {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  z-index: 1;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.poster {
+  width: 250px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.info h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.tagline {
+  font-style: italic;
+  color: #ccc;
+}
+
+.genres, .meta, .rating {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #bbb;
+}
+
+.watch-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 16px;
+  background: #ff3d00;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.watch-link:hover {
+  background: #e63600;
+}
+
+.overview, .production {
+ 
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.overview h2, .production h2 {
+  margin-bottom: 10px;
+}
+
+.companies {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.company {
+ background: #e63600;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 100px;
+  text-align: center;
+}
+
+.company img {
+  max-width: 100px;
+  max-height: 50px;
+  object-fit: contain;
+}
+
+.no-logo {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .movie-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .poster {
+    width: 180px;
+  }
+
+  .info h1 {
+    font-size: 1.8rem;
+  }
+}
