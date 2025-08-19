@@ -5,6 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { handleError, handleSucsess } from '../../utils';
+const API = import.meta.env.VITE_API_URL;
 function Login() {
 
   const [signState, setSignState] = useState('Login');
@@ -35,7 +36,7 @@ function Login() {
       if (signState === "Sign Up") {
 
 
-        const response = await axios.post('/api/users', {
+        const response = await axios.post(`${API}/api/users`, {
           name: name,
           email: email,
           password: password,
@@ -58,7 +59,7 @@ function Login() {
         setPassword("");
         setEmail('');
       } else {
-        const response = await axios.post('/api/logins', {
+        const response = await axios.post(`${API}/api/logins`, {
           email: email,
           password: password,
         });

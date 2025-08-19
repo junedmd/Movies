@@ -3,11 +3,12 @@ import "./User.css";
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer';
 import img from "../../assets/user-.png"
+const API = import.meta.env.VITE_API_URL;
 function Users() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch("api/users")
+        fetch(`${API}/api/users`)
             .then(response => response.json())
             .then(response => setData(response.data),sponse => setData(response.data), console.log("data of the users", data))
             .catch(err => console.error(err));
