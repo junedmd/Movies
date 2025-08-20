@@ -67,8 +67,8 @@
     cursor: pointer;
 }
 .nav-right .profile{
-    border-radius: 4px;
-    width: 35px;
+    border-radius: 2px;
+    width: 30px;
 
 }
 .nav-profile{
@@ -98,4 +98,35 @@
 }
 .nav-dark{
     background-color: #141414;
+}
+@media (max-width: 768px) {
+    .navbar{
+        height: 40px;
+    }
+    .nav-logo{
+        font-size: 1rem; 
+        font-weight: 300;
+        background-size: 20%;
+    }
+    .nav-left ul li 
+    {
+        display: none;
+    }
+    .nav-right{
+        font-size: 14px;
+
+    }
+    .nav-right .icons{
+        width: 13px;
+    }
+    .nav-right .profile{
+        width: 15px;
+    }
+     .nav-right .drop-icons{
+        width: 15px;
+     }
+}
+
+@media (max-width: 480px) {
+    
 }

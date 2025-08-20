@@ -10,7 +10,7 @@ function Users() {
     useEffect(() => {
         fetch(`${API}/users`)
             .then(response => response.json())
-            .then(response => setData(response.data),sponse => setData(response.data), console.log("data of the users", data))
+            .then(response => setData(response.data))
             .catch(err => console.error(err));
     }, [])
     return (

@@ -5,12 +5,12 @@
     align-items: center;    
     height: 100vh;
     gap: 10px;           
-     background: #e63600;
+     background: #e74817;
      
 }
 .player img{
     position: absolute;
-    height: 45px;
+    height: 35px;
     top: 15px;
     left: 10px;
      gap: 10px;  
@@ -28,5 +28,19 @@
     font-family: cursive;
     font-weight: 800;
     justify-content: space-between;
-    width: 70%;
+    width: 60%;
+}
+
+@media (max-width: 768px) {
+
+    .figure-box{
+        height: 640px;
+        width: 300px;
+    }
+    .player-info{
+        display: flex;
+        flex-direction:column;
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
 }
