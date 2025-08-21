@@ -39,7 +39,7 @@ function Login() {
       if (signState === "Sign Up") {
 
 
-        const response = await axios.post(`${API}/users`, {
+        const response = await axios.post(`${API}/signup`, {
           name: name,
           email: email,
           password: password,
@@ -62,7 +62,7 @@ function Login() {
         setPassword("");
         setEmail('');
       } else {
-        const response = await axios.post(`${API}/logins`, {
+        const response = await axios.post(`${API}/login`, {
           email: email,
           password: password,
         });

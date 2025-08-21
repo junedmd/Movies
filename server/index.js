@@ -7,8 +7,7 @@ dotenv.config();
 
 import cors from "cors";
 
-import { postUser,postLogin, getUser } from "./controllers/user.js";
-
+import AuthRouter from "./routes/AuthRouter.js";
 const PORT = process.env.PORT || 5000;
 
 const connectMongoDB = async ()=>{
@@ -31,13 +30,15 @@ app.use(cors({
 
 
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Backend is running ✅");
 });
 // api for task
-app.post("/api/users",postUser);
-app.post("/api/logins",postLogin);
-app.get("/api/users",getUser)
+
+
+app.use("/api",AuthRouter);
+
+
 app.listen(PORT,()=>{
     console.log("server is running on the port 5000")
 })
