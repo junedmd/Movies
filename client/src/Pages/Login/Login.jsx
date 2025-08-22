@@ -62,15 +62,13 @@ useEffect(() => {
         } else {
 
           handleError(" Please fill all the details.")
-
-
         };
         setName("");
         setPassword("");
         setEmail('');
       } else {
-        console.log(email, password);
-        console.log("Login payload sending:", { email, password });
+        // console.log(email, password);
+        // console.log("Login payload sending:", { email, password });
         const response = await axios.post(`${API}/api/login`, {
           email: email,
           password: password,
@@ -86,12 +84,12 @@ useEffect(() => {
           }));
           setTimeout(() => {
             window.location.href = "/";
-          }, 1500);
+          }, 1000);
 
         } else {
           // alert(response?.data?.message)
           handleError("Please Check your Cardentails..")
-          toast(response?.data?.error?.details?.message);
+          toast(response?.error?.details?.message);
         };
         setName("");
         setPassword("");
