@@ -8,7 +8,7 @@ function Users() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(`${API}/users`)
+        fetch(`${API}/api/users`)
             .then(response => response.json())
             .then(response => setData(response.data))
             .catch(err => console.error(err));

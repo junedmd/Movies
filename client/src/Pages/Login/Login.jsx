@@ -20,19 +20,23 @@ function Login() {
   }
   const navigate = useNavigate();
 
-  useEffect(() => {
+useEffect(() => {
+  try {
     const store = JSON.parse(localStorage.getItem("user") || "{}");
     if (store?.name) {
-      window.location.href = "/"
-      return handleSucsess(" You are Already Login")
+      navigate("/");
+      handleSucsess("You are Already Logged In");
     }
-  }, []);
+  } catch (e) {
+    console.log("Invalid localStorage:", e);
+  }
+}, []);
 
 
   const SignIn = async (e) => {
 
     e.preventDefault();
-    
+
     console.log("API Base URL:", API);
 
     try {
@@ -40,13 +44,13 @@ function Login() {
 
       if (signState === "Sign Up") {
 
-  
-        const response = await axios.post(`${API}/signup`, {
+
+        const response = await axios.post(`${API}/api/signup`, {
           name: name,
           email: email,
           password: password,
         });
-       
+
         if (response?.data?.success) {
           handleSucsess(" You Signup Successfully!!! ");
           setTimeout(() => {
@@ -56,18 +60,18 @@ function Login() {
           setSignState("Login")
 
         } else {
-        
+
           handleError(" Please fill all the details.")
-          
+
 
         };
         setName("");
         setPassword("");
         setEmail('');
       } else {
-        console.log(email,password);
+        console.log(email, password);
         console.log("Login payload sending:", { email, password });
-        const response = await axios.post(`${API}/login`, {
+        const response = await axios.post(`${API}/api/login`, {
           email: email,
           password: password,
         });
@@ -75,7 +79,11 @@ function Login() {
         if (response?.data?.success) {
           // alert(response?.data?.message)
           handleSucsess("You Login Successfully");
-          localStorage.setItem("user", JSON.stringify(response?.data?.data))
+          localStorage.setItem("user", JSON.stringify({
+            email: response.data.email,
+            name: response.data.name,
+            token: response.data.jwtToken
+          }));
           setTimeout(() => {
             window.location.href = "/";
           }, 1500);
