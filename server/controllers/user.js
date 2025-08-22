@@ -2,6 +2,8 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 
 // signup api
 const postUser = async (req, res) => {
@@ -48,41 +50,51 @@ const postUser = async (req, res) => {
 const postLogin = async (req, res) => {
     console.log(req.body);
     try {
+        console.log("JWT Secret being used:", process.env.JWT_SECRET);
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.send({
+            return res.status(400).send({
                 success: false,
                 message: "please fill all section"
             })
         }
-        const response = await User.findOne({ email: email });
+        const user = await User.findOne({ email: email});
         const errorMsg = "please check your email and passwords";
 
-        if (!response) {
-            return res.status(409)
+        if (!user) {
+            return res.status(401)
                 .json({ message: errorMsg, success: false });
         };
 
-        const isEqual = await bcrypt.compare(password, response.password);
-        if (!isEqual) {
-            return res.status(403)
-                .json({ message: errorMsg, success: false })
+         const isMatch =await bcrypt.compare(password, user.password);
+         console.log(isMatch);
+        if (!isMatch) {
+            return res.status(401).json({ message: "Invalid Password", success: false });
         }
+        
+        const secret = process.env.JWT_SECRET && process.env.JWT_SECRET.trim() !== ""
+      ? process.env.JWT_SECRET
+      : "defaultSecretKey";
+
+
+      console.log("JWT Secret being used:", secret);
+      console.log("User password in DB:", user.password);
+      console.log("Password trying to match:", password);
 
         const jwtToken = jwt.sign(
-            { email: response.email, _id: response._id },
-            process.env.JWT_SECRET,
+            { email: user.email, _id: user._id },
+            secret,
             { expiresIn: "24h" }
-        )
+        );
         
-            res.status(200).send(
+           return res.status(200).send(
                 {
                     message: "login successfuly!!!",
                     success: true,
                     jwtToken,
-                    email,
-                    name: response.name,
+                    email:user.email,
+                    name: user.name,
                 }
             )
         
@@ -93,6 +105,7 @@ const postLogin = async (req, res) => {
         })
     }
 
+  
 };
 
 // fetch api

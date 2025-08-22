@@ -6,6 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { handleError, handleSucsess } from '../../utils';
 import { useNavigate } from "react-router-dom";
+
 const API = import.meta.env.VITE_API_URL;
 function Login() {
 
@@ -31,6 +32,7 @@ function Login() {
   const SignIn = async (e) => {
 
     e.preventDefault();
+    
     console.log("API Base URL:", API);
 
     try {
@@ -38,12 +40,13 @@ function Login() {
 
       if (signState === "Sign Up") {
 
-
+  
         const response = await axios.post(`${API}/signup`, {
           name: name,
           email: email,
           password: password,
         });
+       
         if (response?.data?.success) {
           handleSucsess(" You Signup Successfully!!! ");
           setTimeout(() => {
@@ -62,11 +65,13 @@ function Login() {
         setPassword("");
         setEmail('');
       } else {
+        console.log(email,password);
+        console.log("Login payload sending:", { email, password });
         const response = await axios.post(`${API}/login`, {
           email: email,
           password: password,
         });
-
+        console.log("Login response:", response.data);
         if (response?.data?.success) {
           // alert(response?.data?.message)
           handleSucsess("You Login Successfully");
@@ -78,7 +83,7 @@ function Login() {
         } else {
           // alert(response?.data?.message)
           handleError("Please Check your Cardentails..")
-          toast(response?.data?.message);
+          toast(response?.data?.error?.details?.message);
         };
         setName("");
         setPassword("");
