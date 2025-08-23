@@ -26,6 +26,7 @@ useEffect(() => {
 const navigate = useNavigate();
     
 const SignIn = async ()=>{
+    console.log("API URL:", API);
     try{
         const response = await axios.post(`${API}/api/signup`, {
           name: name,

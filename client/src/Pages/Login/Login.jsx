@@ -16,6 +16,7 @@ function Login() {
 
   const logIn = async () => {
     console.log(email, password)
+    console.log("API URL:", API);
     try {
       const response = await axios.post(`${API}/api/login`, {
         email: email,
