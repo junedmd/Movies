@@ -23,7 +23,7 @@ const connectMongoDB = async ()=>{
 connectMongoDB();
 
 app.use(cors({
-  origin: ['http://localhost:5173', "https://movies-hubs-delta.vercel.app"],
+  origin: ['http://localhost:5173', "https://movies-5aod.vercel.app/"],
   methods: ['GET', 'POST'],
   credentials: true
 }));
