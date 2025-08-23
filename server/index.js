@@ -23,8 +23,8 @@ const connectMongoDB = async ()=>{
 connectMongoDB();
 
 app.use(cors({
-  origin: ['http://localhost:5173', "https://movies-5aod.vercel.app/"],
-  methods: ['GET', 'POST'],
+  origin: ['http://localhost:5173', "https://movies-5aod.vercel.app"],
+  methods: ['GET', 'POST' ,'DELETE', 'PUT'],
   credentials: true
 }));
 
