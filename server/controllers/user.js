@@ -12,7 +12,7 @@ const postUser = async (req, res) => {
     try {
          const { name, email, password } = req.body;
           if ( !name || !email || !password) {
-            return res.send({
+            return res.status(400).send({
                 success: false,
                 message: "please fill all section"
             })
@@ -20,7 +20,7 @@ const postUser = async (req, res) => {
         const user = await User.findOne({ email: email });
         if (user) {
             return res.status(409)
-                .json({ message: "user is already exist, you can directly login", success: "false" })
+                .json({ message: "user is already exist, you can directly login", success: false })
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -63,7 +63,7 @@ const postLogin = async (req, res) => {
         const errorMsg = "please check your email and passwords";
 
         if (!user) {
-            return res.status(401)
+            return res.send
                 .json({ message: errorMsg, success: false });
         };
 

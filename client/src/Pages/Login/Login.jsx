@@ -1,121 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import "./Login.css";
-
-import axios from "axios";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { handleError, handleSucsess } from '../../utils';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const API = import.meta.env.VITE_API_URL;
 function Login() {
-
-  const [signState, setSignState] = useState('Login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-
-  const directCall = () => {
-    window.location.href = "/"
-  }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-useEffect(() => {
-  try {
-    const store = JSON.parse(localStorage.getItem("user") || "{}");
-    if (store?.name) {
-      navigate("/");
-      handleSucsess("You are Already Logged In");
-    }
-  } catch (e) {
-    console.log("Invalid localStorage:", e);
-  }
-}, []);
 
-
-  const SignIn = async (e) => {
-
-    e.preventDefault();
-
-    console.log("API Base URL:", API);
-
+  const logIn = async () => {
+    console.log(email, password)
     try {
-
-
-      if (signState === "Sign Up") {
-
-
-        const response = await axios.post(`${API}/api/signup`, {
-          name: name,
-          email: email,
-          password: password,
-        });
-
-        if (response?.data?.success) {
-          handleSucsess(" You Signup Successfully!!! ");
-          setTimeout(() => {
-            navigate("/login");   // this will stay in frontend router
-          }, 1500);
-
-          setSignState("Login")
-
-        } else {
-
-          handleError(" Please fill all the details.")
-        };
-        setName("");
-        setPassword("");
-        setEmail('');
+      const response = await axios.post(`${API}/api/login`, {
+        email: email,
+        password: password,
+      })
+      console.log(response.data)
+      if (response?.data?.success) {
+        handleSucsess("You Login Successfully!!");
+        localStorage.setItem("user", JSON.stringify({
+          email: response.data.email,
+          name: response.data.name,
+          token: response.data.jwtToken
+        }));
+        navigate("/");
       } else {
-        // console.log(email, password);
-        // console.log("Login payload sending:", { email, password });
-        const response = await axios.post(`${API}/api/login`, {
-          email: email,
-          password: password,
-        });
-        console.log("Login response:", response.data);
-        if (response?.data?.success) {
-          // alert(response?.data?.message)
-          handleSucsess("You Login Successfully");
-          localStorage.setItem("user", JSON.stringify({
-            email: response.data.email,
-            name: response.data.name,
-            token: response.data.jwtToken
-          }));
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 1000);
-
-        } else {
-          // alert(response?.data?.message)
-          handleError("Please Check your Cardentails..")
-          toast(response?.error?.details?.message);
-        };
-        setName("");
-        setPassword("");
-        setEmail('');
+        handleError(response?.data?.error || "Invalid login credentials");
       }
 
     } catch (e) {
-      console.log(e.message)
-    };
+       
+      if (e.response?.data?.message) {
+      handleError(e.response.data.message); // backend error message
+    } else {
+      handleError("Network error, please try again later");
+    }
+    console.log(e);
+
+    console.log(e.message);
+    }
   }
+
 
 
   return (
     <div className='login'>
       {/* <img src={Logo} alt="" className='logo' onClick={directCall} /> */}
-      <span className="login-logo" onClick={directCall}> Movies Hub</span>
+      <span className="login-logo" > Movies Hub</span>
       <div className="login-form">
-        <h1>{signState}</h1>
+        <h1>Login</h1>
         <form action="" >
-          {
-            signState === "Sign Up" ? <input type="Your Name" placeholder='Your Name' value={name} onChange={(e) => {
-              setName(e.target.value)
-
-            }} /> : <></>
-          }
-
 
           <input type="email" placeholder='Your Email' value={email} onChange={(e) => {
             setEmail(e.target.value)
@@ -124,7 +64,7 @@ useEffect(() => {
           <input type="password" placeholder='Your Password' value={password} onChange={(e) => {
             setPassword(e.target.value)
           }} />
-          <button className='btn' type='button' onClick={SignIn}> {signState === "Sign Up" ? "Sign Up" : "Login"}</button>
+          <button className='btn' type='button' onClick={logIn}> Login</button>
 
 
           <div className="form-help">
@@ -136,19 +76,16 @@ useEffect(() => {
           </div>
         </form>
         <div className="form-switch">
-
-          {signState === "Sign Up" ? <p>Already have account? <span onClick={() => {
-            setSignState("Login")
-          }}> Login Now</span></p> : <p>
-            New to Movies Hub? <span onClick={() => {
-              setSignState("Sign Up")
-            }}> Sign Up Now</span>
-          </p>}
+          <p>
+            New to Movies Hub?  <Link to="/signup" > <span> Sign Up Now</span> </Link>
+          </p>
         </div>
       </div>
-      <ToastContainer />
+
     </div>
   )
 };
 
 export default Login;
+
+

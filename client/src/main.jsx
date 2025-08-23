@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import Details from './Pages/Details/Details.jsx';
 import User from './Pages/Users/Users.jsx';
+import Signup from './Pages/Signup/Signup.jsx';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <ToastContainer />
@@ -18,7 +19,7 @@ createRoot(document.getElementById('root')).render(
      <Route path='/details/:id' element={<Details/>}/>
      <Route path='/video/:id' element={<Video/>}/>
      <Route path='/users' element={<User/>}/>
-     
+     <Route path='/signup' element={<Signup/>}/>
     </Routes>
   </BrowserRouter>
 )
