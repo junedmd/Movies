@@ -53,7 +53,7 @@ function Login() {
   return (
     <div className='login'>
       {/* <img src={Logo} alt="" className='logo' onClick={directCall} /> */}
-      <span className="login-logo" > Movies Hub</span>
+       <Link to='/'> <span className="login-logo"> Movies Hub</span></Link>  
       <div className="login-form">
         <h1>Login</h1>
         <form action="" >

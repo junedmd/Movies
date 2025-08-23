@@ -60,7 +60,8 @@ const SignIn = async ()=>{
     <div>
       <div className='login'>
            
-            <span className="login-logo" > Movies Hub</span>
+           <Link to='/'> <span className="login-logo"> Movies Hub</span></Link>  
+           
             <div className="login-form">
               <h1>Signup</h1>
               <form action="" >
